@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>もずくチラシ ヒアリングシート</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: one narrow column of numbered sections, a sticky progress bar on top, a result panel at the end */
+:root {
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --fg: #1d2326;
+  --muted: #5e6a6e;
+  --line: #d9dfe0;
+  --accent: #0d6b7a;      /* deep sea */
+  --accent-soft: #e3f0f2;
+  --mark: #c7792a;        /* mozuku brown-amber */
+  --display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141a1c; --surface: #1c2427; --fg: #e8ecec; --muted: #9aa7aa; --line: #30403f;
+  --accent: #5fc0cf; --accent-soft: #1e3337; --mark: #e0a060; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141a1c; --surface: #1c2427; --fg: #e8ecec; --muted: #9aa7aa; --line: #30403f;
+  --accent: #5fc0cf; --accent-soft: #1e3337; --mark: #e0a060; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 80px; }
+.wrap { max-width: 720px; margin: 0 auto; }
+header { padding-block: 40px 24px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+h1 { font-family: var(--display); font-size: clamp(26px, 5vw, 34px); line-height: 1.3; margin: 8px 0 12px; text-wrap: balance; font-weight: 700; }
+.lead { color: var(--muted); margin: 0; max-width: 60ch; }
+.lead strong { color: var(--fg); }
+
+.progress { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px 8px; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); }
+.bar { flex: 1; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.progress b { font-variant-numeric: tabular-nums; color: var(--fg); }
+
+section { padding-block: 36px 8px; }
+section + section { border-top: 1px solid var(--line); }
+.num { font-family: var(--display); color: var(--mark); font-size: 13px; letter-spacing: .1em; }
+h2 { font-family: var(--display); font-size: 22px; margin: 4px 0 4px; font-weight: 700; text-wrap: balance; }
+.why { color: var(--muted); font-size: 13px; margin: 0 0 22px; }
+
+.q { display: grid; gap: 6px; margin-bottom: 24px; }
+label.t { font-weight: 700; }
+label.t small { font-weight: 400; color: var(--muted); margin-left: 6px; font-size: 12px; }
+.hint { font-size: 12.5px; color: var(--muted); }
+input[type=text], input[type=number], textarea, select {
+  width: 100%; font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+textarea { min-height: 88px; resize: vertical; }
+input:focus, textarea:focus, select:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opts label { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 14px; }
+.opts label:has(:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.opts input { accent-color: var(--accent); margin: 0; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
+
+.products { display: grid; gap: 10px; }
+.product { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px; }
+@media (max-width: 520px) { .product { grid-template-columns: 1fr; } }
+.ghost { font: inherit; background: none; border: 1px dashed var(--line); color: var(--accent); border-radius: 6px; padding: 8px 12px; cursor: pointer; }
+
+.result { margin-top: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.result h2 { margin-top: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+.btn { font: inherit; font-weight: 700; background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 12px 20px; cursor: pointer; }
+.btn.sub { background: var(--surface); color: var(--accent); border: 1px solid var(--accent); }
+pre#out { white-space: pre-wrap; word-break: break-word; font: 13px/1.6 var(--body); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 14px; max-height: 420px; overflow: auto; margin: 0; }
+.toast { font-size: 13px; color: var(--accent); min-height: 1.4em; }
+.missing { font-size: 13px; color: var(--mark); }
+footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Hearing Sheet</div>
+  <h1>加工もずく 販促チラシ<br>ヒアリングシート</h1>
+  <p class="lead">チラシを作る前に、<strong>誰に・何を・どう届けたいか</strong>を教えてください。わかる範囲で大丈夫です。空欄があっても送れます。最後の「まとめを作る」でテキストになるので、コピーしてLINEやメールで送ってください。</p>
+</header>
+
+<div class="progress"><span>入力状況</span><div class="bar"><i id="bar"></i></div><b id="pct">0%</b></div>
+
+<form id="f" novalidate>
+
+<section>
+  <div class="num">01</div><h2>基本情報</h2>
+  <p class="why">チラシに載せる「製造者・連絡先」の元になります。</p>
+  <div class="q"><label class="t" for="name">屋号・事業者名</label><input type="text" id="name" name="屋号・事業者名" placeholder="例：〇〇もずく / 〇〇水産"></div>
+  <div class="q"><label class="t" for="person">代表者のお名前</label><input type="text" id="person" name="代表者"></div>
+  <div class="q"><label class="t" for="area">漁場・加工場の場所<small>市町村と海域</small></label><input type="text" id="area" name="漁場・加工場の場所" placeholder="例：勝連半島沖 / 加工場は うるま市〇〇"></div>
+  <div class="q"><label class="t" for="contact">問い合わせ先として載せてよいもの</label><textarea id="contact" name="問い合わせ先" placeholder="電話・LINE公式・Instagram・メール・住所 など。載せてよいものだけ"></textarea></div>
+  <div class="q"><label class="t">ロゴはありますか</label>
+    <div class="opts" data-radio="ロゴ"><label><input type="radio" name="ロゴ" value="ある（データあり）">ある（データあり）</label><label><input type="radio" name="ロゴ" value="ある（紙や看板のみ）">ある（紙や看板のみ）</label><label><input type="radio" name="ロゴ" value="ない・これから作りたい">ない・これから作りたい</label></div></div>
+</section>
+
+<section>
+  <div class="num">02</div><h2>チラシの目的</h2>
+  <p class="why">「何のためのチラシか」で、紙面の作り方が大きく変わります。</p>
+  <div class="q"><label class="t">このチラシで一番やりたいこと<small>1つ選ぶ</small></label>
+    <div class="opts" data-radio="目的"><label><input type="radio" name="目的" value="直接の注文をもらう（個人向け）">直接の注文をもらう（個人向け）</label><label><input type="radio" name="目的" value="飲食店・小売店など取引先を増やす">飲食店・小売店など取引先を増やす</label><label><input type="radio" name="目的" value="まず名前と顔を知ってもらう">まず名前と顔を知ってもらう</label><label><input type="radio" name="目的" value="店頭やイベントで手に取ってもらう">店頭やイベントで手に取ってもらう</label><label><input type="radio" name="目的" value="ECやLINEに登録してもらう">ECやLINEに登録してもらう</label></div></div>
+  <div class="q"><label class="t" for="goal">読んだ人に、最後にとってほしい行動</label><input type="text" id="goal" name="とってほしい行動" placeholder="例：QRからLINEで注文 / 電話で問い合わせ / 道の駅で買う"></div>
+  <div class="q"><label class="t" for="bg">チラシを作ろうと思った背景</label><textarea id="bg" name="背景" placeholder="例：加工場が来春に完成する。これまで生もずくを市場出しだけだったが、自分の名前で売りたい"></textarea></div>
+</section>
+
+<section>
+  <div class="num">03</div><h2>届ける相手と配り方</h2>
+  <p class="why">相手によって言葉づかい・写真・情報量を変えます。</p>
+  <div class="q"><label class="t">主に誰に読んでほしいですか<small>複数可</small></label>
+    <div class="opts"><label><input type="checkbox" name="読み手" value="県内の一般家庭">県内の一般家庭</label><label><input type="checkbox" name="読み手" value="県外の個人（お取り寄せ・ギフト）">県外の個人（お取り寄せ・ギフト）</label><label><input type="checkbox" name="読み手" value="観光客">観光客</label><label><input type="checkbox" name="読み手" value="飲食店">飲食店</label><label><input type="checkbox" name="読み手" value="スーパー・小売・道の駅のバイヤー">スーパー・小売・道の駅のバイヤー</label><label><input type="checkbox" name="読み手" value="ふるさと納税の利用者">ふるさと納税の利用者</label><label><input type="checkbox" name="読み手" value="健康志向の人">健康志向の人</label></div></div>
+  <div class="q"><label class="t">どこで・どう配りますか<small>複数可</small></label>
+    <div class="opts"><label><input type="checkbox" name="配布方法" value="店頭に置く">店頭に置く</label><label><input type="checkbox" name="配布方法" value="イベント・マルシェで手渡し">イベント・マルシェで手渡し</label><label><input type="checkbox" name="配布方法" value="商品に同梱">商品に同梱</label><label><input type="checkbox" name="配布方法" value="営業で持参（取引先向け）">営業で持参（取引先向け）</label><label><input type="checkbox" name="配布方法" value="郵送・DM">郵送・DM</label><label><input type="checkbox" name="配布方法" value="ポスティング">ポスティング</label><label><input type="checkbox" name="配布方法" value="SNSに画像として投稿">SNSに画像として投稿</label></div></div>
+  <div class="q"><label class="t" for="persona">「こんな人に買ってほしい」を具体的に</label><textarea id="persona" name="買ってほしい人" placeholder="例：毎朝の味噌汁にもずくを入れたい50代の主婦 / 沖縄料理店で本物を出したい店主"></textarea></div>
+</section>
+
+<section>
+  <div class="num">04</div><h2>商品ラインナップ</h2>
+  <p class="why">掲載する商品と価格。未定なら「未定」でOKです。</p>
+  <div class="q"><label class="t">商品名・内容量・価格</label>
+    <div class="products" id="products">
+      <div class="product"><input type="text" name="商品名" placeholder="商品名（例：塩蔵もずく）"><input type="text" name="内容量" placeholder="内容量（例：500g）"><input type="text" name="価格" placeholder="価格（例：600円）"></div>
+      <div class="product"><input type="text" name="商品名" placeholder="商品名"><input type="text" name="内容量" placeholder="内容量"><input type="text" name="価格" placeholder="価格"></div>
+      <div class="product"><input type="text" name="商品名" placeholder="商品名"><input type="text" name="内容量" placeholder="内容量"><input type="text" name="価格" placeholder="価格"></div>
+    </div>
+    <button type="button" class="ghost" id="addp">＋ 商品を追加</button></div>
+  <div class="q"><label class="t" for="hero">一番推したい商品とその理由</label><textarea id="hero" name="一番推したい商品" placeholder="例：味付けもずく。そのまま食べられて初めての人にも勧めやすい"></textarea></div>
+  <div class="q"><label class="t" for="keep">保存方法・賞味期限</label><input type="text" id="keep" name="保存方法・賞味期限" placeholder="例：冷蔵で2週間 / 塩蔵は常温1年"></div>
+  <div class="q"><label class="t" for="future">今後出す予定の商品</label><input type="text" id="future" name="今後の商品" placeholder="例：もずく酢、もずく天ぷらの素、業務用10kg"></div>
+  <div class="q"><label class="t" for="lot">取引先向けの条件<small>取引先向けなら</small></label><textarea id="lot" name="取引条件" placeholder="例：最小ロット、卸価格の有無、配送できる地域、サンプル対応"></textarea></div>
+</section>
+
+<section>
+  <div class="num">05</div><h2>強み・こだわり</h2>
+  <p class="why">キャッチコピーの材料になる、いちばん大事なパートです。</p>
+  <div class="q"><label class="t" for="sea">海・漁場のこと</label><textarea id="sea" name="海・漁場" placeholder="例：水温が低めで潮通しのいい海域。太もずくが育ちやすい"></textarea></div>
+  <div class="q"><label class="t" for="season">収穫時期と、旬</label><input type="text" id="season" name="収穫時期" placeholder="例：4〜6月。一番やわらかいのは5月"></div>
+  <div class="q"><label class="t" for="process">加工の方法・こだわり</label><textarea id="process" name="加工のこだわり" placeholder="例：収穫当日に加工 / 塩は〇〇産 / 洗いを3回 / 添加物なし"></textarea></div>
+  <div class="q"><label class="t" for="diff">スーパーのもずくと、何が違いますか</label><textarea id="diff" name="他との違い" placeholder="例：シャキシャキ感、太さ、磯の香り、漁師が自分で加工している"></textarea></div>
+  <div class="q"><label class="t" for="voice">お客さんや知人によく言われること</label><textarea id="voice" name="よく言われること" placeholder="例：「今まで食べたもずくと全然違う」と言われた"></textarea></div>
+  <div class="q"><label class="t" for="award">受賞・認証・メディア掲載など</label><input type="text" id="award" name="受賞・認証" placeholder="例：〇〇品評会 優秀賞 / 新聞掲載"></div>
+</section>
+
+<section>
+  <div class="num">06</div><h2>作り手のストーリー</h2>
+  <p class="why">「誰が作っているか」が伝わると、値段ではなく人で選ばれます。</p>
+  <div class="q"><label class="t" for="career">漁師歴・もずくを始めたきっかけ</label><textarea id="career" name="漁師歴・きっかけ"></textarea></div>
+  <div class="q"><label class="t" for="why2">加工場をつくる理由・想い</label><textarea id="why2" name="加工場への想い" placeholder="例：自分の手で最後まで届けたい / 地元の雇用をつくりたい"></textarea></div>
+  <div class="q"><label class="t">顔写真の掲載</label>
+    <div class="opts" data-radio="顔出し"><label><input type="radio" name="顔出し" value="OK">OK</label><label><input type="radio" name="顔出し" value="家族や仲間も含めてOK">家族や仲間も含めてOK</label><label><input type="radio" name="顔出し" value="NG（手元や海の写真で）">NG（手元や海の写真で）</label></div></div>
+  <div class="q"><label class="t" for="recipe">おすすめの食べ方・レシピ</label><textarea id="recipe" name="おすすめの食べ方" placeholder="例：三杯酢、味噌汁、天ぷら、そうめんに混ぜる。家で実際によくやる食べ方"></textarea></div>
+</section>
+
+<section>
+  <div class="num">07</div><h2>デザインの希望</h2>
+  <p class="why">正解はないので、好みの方向だけ教えてください。</p>
+  <div class="q"><label class="t">雰囲気<small>複数可</small></label>
+    <div class="opts"><label><input type="checkbox" name="雰囲気" value="素朴・手づくり感">素朴・手づくり感</label><label><input type="checkbox" name="雰囲気" value="上質・贈り物向き">上質・贈り物向き</label><label><input type="checkbox" name="雰囲気" value="元気・にぎやか">元気・にぎやか</label><label><input type="checkbox" name="雰囲気" value="シンプル・清潔">シンプル・清潔</label><label><input type="checkbox" name="雰囲気" value="沖縄らしさ前面">沖縄らしさ前面</label><label><input type="checkbox" name="雰囲気" value="和風">和風</label><label><input type="checkbox" name="雰囲気" value="写真をドンと大きく">写真をドンと大きく</label><label><input type="checkbox" name="雰囲気" value="文字で読ませる">文字で読ませる</label></div></div>
+  <div class="q"><label class="t" for="ref">参考にしたいチラシ・パッケージ・お店</label><textarea id="ref" name="参考" placeholder="例：〇〇の塩のパッケージが好き / 写真があれば一緒に送ってください"></textarea></div>
+  <div class="q"><label class="t" for="color">使いたい色・避けたい色</label><input type="text" id="color" name="色の希望" placeholder="例：海の青と白 / 赤は使いたくない"></div>
+  <div class="q"><label class="t">使える写真素材<small>複数可</small></label>
+    <div class="opts"><label><input type="checkbox" name="写真素材" value="商品（パッケージ）">商品（パッケージ）</label><label><input type="checkbox" name="写真素材" value="料理した状態">料理した状態</label><label><input type="checkbox" name="写真素材" value="海・漁場">海・漁場</label><label><input type="checkbox" name="写真素材" value="収穫の様子">収穫の様子</label><label><input type="checkbox" name="写真素材" value="加工場・作業風景">加工場・作業風景</label><label><input type="checkbox" name="写真素材" value="本人・家族">本人・家族</label><label><input type="checkbox" name="写真素材" value="ほとんどない（撮影が必要）">ほとんどない（撮影が必要）</label></div></div>
+  <div class="q"><label class="t" for="ng">載せたくないこと・NG表現</label><input type="text" id="ng" name="NG" placeholder="例：値引き表現 / 他社との比較 / 住所"></div>
+</section>
+
+<section>
+  <div class="num">08</div><h2>仕様・スケジュール・予算</h2>
+  <p class="why">印刷の段取りに直結します。未定なら未定で構いません。</p>
+  <div class="q"><label class="t">サイズ</label>
+    <div class="opts" data-radio="サイズ"><label><input type="radio" name="サイズ" value="A4">A4</label><label><input type="radio" name="サイズ" value="A5">A5</label><label><input type="radio" name="サイズ" value="B5">B5</label><label><input type="radio" name="サイズ" value="三つ折り（A4）">三つ折り（A4）</label><label><input type="radio" name="サイズ" value="名刺・ハガキサイズ">名刺・ハガキサイズ</label><label><input type="radio" name="サイズ" value="おまかせ">おまかせ</label></div></div>
+  <div class="q"><label class="t">片面・両面</label>
+    <div class="opts" data-radio="面"><label><input type="radio" name="面" value="片面">片面</label><label><input type="radio" name="面" value="両面">両面</label><label><input type="radio" name="面" value="おまかせ">おまかせ</label></div></div>
+  <div class="row">
+    <div class="q"><label class="t" for="qty">印刷部数</label><input type="text" id="qty" name="部数" placeholder="例：500部"></div>
+    <div class="q"><label class="t" for="budget">予算（印刷＋デザイン）</label><input type="text" id="budget" name="予算" placeholder="例：3万円まで"></div>
+  </div>
+  <div class="row">
+    <div class="q"><label class="t" for="due">使いたい日・締め切り</label><input type="text" id="due" name="締め切り" placeholder="例：4月のマルシェまでに"></div>
+    <div class="q"><label class="t" for="print">印刷の手配</label><input type="text" id="print" name="印刷手配" placeholder="例：ネット印刷でこちらが発注 / 地元の印刷所"></div>
+  </div>
+  <div class="q"><label class="t" for="legal">必ず載せる必要がある表記</label><textarea id="legal" name="必須表記" placeholder="例：製造者名・所在地、原材料、アレルギー、補助金のクレジット、営業許可"></textarea></div>
+  <div class="q"><label class="t" for="other">その他、伝えておきたいこと</label><textarea id="other" name="その他"></textarea></div>
+</section>
+
+</form>
+
+<div class="result" id="result">
+  <h2>まとめを作る</h2>
+  <p class="hint">下のボタンで回答をテキストにまとめます。「コピー」して、LINEやメールで送ってください。</p>
+  <div class="actions"><button type="button" class="btn" id="gen">まとめを作る</button><button type="button" class="btn sub" id="copy" hidden>コピー</button><button type="button" class="btn sub" id="clear">入力を消す</button></div>
+  <div class="missing" id="missing"></div>
+  <div class="toast" id="toast"></div>
+  <pre id="out" hidden></pre>
+</div>
+
+<footer>入力内容はこの端末のブラウザにだけ一時保存されます。送信ボタンはなく、まとめテキストを送ってもらう形です。</footer>
+</div>
+
+<script>
+(function(){
+  const f = document.getElementById('f');
+  const KEY = 'mozuku-flyer-hearing-v1';
+  const fields = () => Array.from(f.querySelectorAll('input, textarea, select'));
+
+  // draft in localStorage
+  function save(){ try{ const d={}; fields().forEach((el,i)=>{ d[i]= el.type==='checkbox'||el.type==='radio' ? el.checked : el.value; }); localStorage.setItem(KEY, JSON.stringify({d, n: document.querySelectorAll('.product').length})); }catch(e){} }
+  function load(){ try{ const s=localStorage.getItem(KEY); if(!s) return; const {d,n}=JSON.parse(s); for(let i=document.querySelectorAll('.product').length;i<n;i++) addProduct(); fields().forEach((el,i)=>{ if(!(i in d)) return; if(el.type==='checkbox'||el.type==='radio') el.checked=!!d[i]; else el.value=d[i]; }); }catch(e){} }
+
+  function addProduct(){
+    const div=document.createElement('div'); div.className='product';
+    div.innerHTML='<input type="text" name="商品名" placeholder="商品名"><input type="text" name="内容量" placeholder="内容量"><input type="text" name="価格" placeholder="価格">';
+    document.getElementById('products').appendChild(div);
+  }
+  document.getElementById('addp').addEventListener('click', ()=>{ addProduct(); save(); });
+
+  // progress: count questions (.q) that have any value
+  function progress(){
+    const qs=Array.from(f.querySelectorAll('.q')); let done=0;
+    qs.forEach(q=>{ const els=Array.from(q.querySelectorAll('input, textarea')); if(els.some(e=> (e.type==='checkbox'||e.type==='radio') ? e.checked : e.value.trim())) done++; });
+    const p=Math.round(done/qs.length*100); document.getElementById('bar').style.width=p+'%'; document.getElementById('pct').textContent=p+'%';
+  }
+  f.addEventListener('input', ()=>{ save(); progress(); });
+  f.addEventListener('change', ()=>{ save(); progress(); });
+
+  function build(){
+    const lines=['【加工もずく チラシ ヒアリング回答】', '作成日：'+new Date().toLocaleDateString('ja-JP'), ''];
+    const missing=[];
+    f.querySelectorAll('section').forEach(sec=>{
+      lines.push('■ '+sec.querySelector('h2').textContent);
+      sec.querySelectorAll('.q').forEach(q=>{
+        const title=q.querySelector('label.t').childNodes[0].textContent.trim();
+        if(q.querySelector('#products')){
+          const rows=Array.from(q.querySelectorAll('.product')).map(r=>Array.from(r.querySelectorAll('input')).map(i=>i.value.trim())).filter(r=>r.some(Boolean));
+          if(rows.length){ lines.push('・'+title); rows.forEach(r=>lines.push('　- '+r.filter(Boolean).join(' / '))); } else missing.push(title);
+          return;
+        }
+        const checks=Array.from(q.querySelectorAll('input:checked')).map(i=>i.value);
+        const texts=Array.from(q.querySelectorAll('input[type=text], textarea')).map(i=>i.value.trim()).filter(Boolean);
+        const val=checks.concat(texts).join('、');
+        if(val){ lines.push('・'+title+'：'+(val.includes('\n')?'\n'+val.replace(/^/gm,'　'):val)); } else missing.push(title);
+      });
+      lines.push('');
+    });
+    return {text: lines.join('\n').trim(), missing};
+  }
+
+  const out=document.getElementById('out'), copyBtn=document.getElementById('copy'), toast=document.getElementById('toast'), miss=document.getElementById('missing');
+  document.getElementById('gen').addEventListener('click', ()=>{
+    const {text, missing}=build(); out.textContent=text; out.hidden=false; copyBtn.hidden=false; toast.textContent='';
+    miss.textContent = missing.length ? '未記入：'+missing.slice(0,8).join('、')+(missing.length>8?' ほか'+(missing.length-8)+'件':'')+'（空欄のままでも送れます）' : '全項目に記入があります。';
+    out.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  copyBtn.addEventListener('click', ()=>{
+    const t=out.textContent;
+    const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(out); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast.textContent='選択しました。長押しまたは右クリックでコピーしてください。'; };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(()=>{ toast.textContent='コピーしました。LINEやメールに貼り付けて送ってください。'; }).catch(fallback); } else fallback();
+  });
+  document.getElementById('clear').addEventListener('click', ()=>{
+    if(!document.getElementById('clear').dataset.arm){ document.getElementById('clear').dataset.arm='1'; document.getElementById('clear').textContent='本当に消す（もう一度押す）'; setTimeout(()=>{ delete document.getElementById('clear').dataset.arm; document.getElementById('clear').textContent='入力を消す'; },4000); return; }
+    f.reset(); try{ localStorage.removeItem(KEY); }catch(e){} out.hidden=true; copyBtn.hidden=true; miss.textContent=''; toast.textContent=''; progress();
+    delete document.getElementById('clear').dataset.arm; document.getElementById('clear').textContent='入力を消す';
+  });
+
+  load(); progress();
+})();
+</script>
+</body>
+</html>
