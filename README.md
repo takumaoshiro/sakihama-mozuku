@@ -7,3 +7,4 @@
 - https://takumaoshiro.github.io/sakihama-mozuku/hearing/ — チラシ設計のヒアリングシート
 
 ※ 注文・支払機能は未実装。価格・送料・つくり手情報は確認待ち。調理画像はAI生成のイメージ。
+- https://takumaoshiro.github.io/sakihama-mozuku/culture/ — カルチャー版（青緑ヘッダー、1ページ構成）。現状版との比較用

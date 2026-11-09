@@ -1,0 +1,7 @@
+'use strict';
+const template=document.getElementById('template-text');
+const makeTemplate=size=>`塩もずくについて、価格・送料・在庫を教えてください。\n希望容量：${size||'○○g／kg'}\n希望数量：○袋\nお届け先地域：○○県`;
+if(template)template.textContent=makeTemplate('');
+document.querySelectorAll('.choose').forEach(button=>button.addEventListener('click',()=>{const size=button.dataset.size;document.querySelectorAll('.choose').forEach(b=>{const chosen=b===button;b.setAttribute('aria-pressed',String(chosen));b.innerHTML=chosen?'選択中 <span>✓</span>':'この容量を選ぶ <span>＋</span>';b.closest('article').classList.toggle('selected',chosen)});document.getElementById('selected-notice').hidden=false;document.getElementById('selection-feedback').textContent=`${size}を選びました。注文は送信されていません。`;document.getElementById('selected-title').textContent=`塩もずく ${size} について相談`;template.textContent=makeTemplate(size);document.getElementById('mobile-choice').textContent=`${size}を選択中`;document.getElementById('copy-result').textContent='';}));
+const copy=document.getElementById('copy-button');
+copy?.addEventListener('click',async()=>{try{if(!navigator.clipboard?.writeText)throw Error();await navigator.clipboard.writeText(template.textContent);document.getElementById('copy-result').textContent='コピーしました。注文は送信されていません。'}catch{const range=document.createRange();range.selectNodeContents(template);const selected=window.getSelection();selected.removeAllRanges();selected.addRange(range);document.getElementById('copy-result').textContent='文章を選択しました。端末のコピー操作をお使いください。'}});
